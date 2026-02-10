@@ -6,13 +6,13 @@ export function CTASection() {
           <h2 className="text-3xl md:text-4xl lg:text-[42px] font-medium text-white tracking-tight">
             Your morning in one screen.
           </h2>
-          <div className="flex items-center gap-3">
-            <button className="px-5 py-2.5 border border-zinc-700 text-white font-medium rounded-lg hover:bg-zinc-800 transition-colors text-sm">
-              Learn more
-            </button>
-            <button className="px-5 py-2.5 bg-white text-zinc-900 font-medium rounded-lg hover:bg-zinc-100 transition-colors text-sm">
+          <div className="flex items-center gap-4">
+            <a href="/login" className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-500 transition-all shadow-xl shadow-indigo-500/20 text-sm uppercase tracking-widest">
+              Get Started
+            </a>
+            <a href="/waitlist" className="px-6 py-3 border border-zinc-800 text-zinc-300 font-bold rounded-xl hover:bg-zinc-900 transition-colors text-sm uppercase tracking-widest">
               Join waitlist
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -7,13 +7,8 @@ export async function POST(req: Request) {
         const body = await req.json()
         const { email, city, interests, people } = body
 
-        // Save to database
-        await db.insert(preRegistrations).values({
-            email,
-            city,
-            interests,
-            people,
-        })
+        // Simulate saving to database for mock-only version
+        console.log("Mock Registration:", { email, city, interests, people });
 
         return NextResponse.json({ success: true })
     } catch (error) {
