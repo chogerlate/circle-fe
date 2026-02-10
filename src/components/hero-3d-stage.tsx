@@ -15,7 +15,7 @@ export function Hero3DStage() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      const offset = Math.min(scrollY / 300, 1) * -20
+      const offset = Math.min(scrollY / 300, 1) * -30
       setYOffset(offset)
     }
 
@@ -32,137 +32,128 @@ export function Hero3DStage() {
   }
 
   return (
-    <>
-      <section className="relative min-h-screen overflow-hidden" style={{ backgroundColor: "#09090B" }}>
-        <Navbar />
+    <section className="relative min-h-[140vh] overflow-hidden" style={{ backgroundColor: "#09090B" }}>
+      {/* Subtle glow */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "40%",
+          left: "50%",
+          transform: "translate(-50%, -30%)",
+          width: "1200px",
+          height: "800px",
+          background: "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%)",
+        }}
+      />
 
-        {/* Subtle glow */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -30%)",
-            width: "1200px",
-            height: "800px",
-            background: "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%)",
-          }}
-        />
-
-        {/* Main content */}
-        <div className="relative z-10 pt-28 flex flex-col">
-          {/* Hero text - contained and centered */}
-          <div className="w-full flex justify-center px-6 mt-16">
-            <div className="w-full max-w-4xl">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl lg:text-[56px] font-medium text-white leading-[1.1] text-balance"
-              >
-                Your morning in one screen
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="mt-6 text-lg text-zinc-400"
-              >
-                The anti feed. Open once. Get informed. Close.
-                <br />
-                Replace your morning scroll with clarity.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-8 flex items-center gap-6"
-              >
-                <a href="/login" className="px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 text-sm">
-                  Get Started
-                </a>
-                <a href="/waitlist" className="px-5 py-2.5 border border-zinc-800 text-zinc-300 font-medium rounded-lg hover:bg-zinc-900 transition-colors text-sm">
-                  Join waitlist
-                </a>
-              </motion.div>
-            </div>
+      {/* Main content */}
+      <div className="relative z-10 pt-28 flex flex-col">
+        {/* Hero text - contained and centered */}
+        <div className="w-full flex justify-center px-6 mt-16">
+          <div className="w-full max-w-7xl">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-5xl md:text-7xl lg:text-[100px] font-medium text-white leading-[0.9] tracking-tighter"
+            >
+              The Daily <span className="text-zinc-700 italic">Finish Line.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mt-10 text-xl text-zinc-500 max-w-lg leading-relaxed"
+            >
+              The anti-feed for people who value their time. We synthesize your Friends, News, Markets, and Research into one page. 
+              Open once. Get informed. Then get off the internet.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-12 flex items-center gap-6"
+            >
+              <a href="/login" className="px-10 py-5 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-500 transition-all shadow-2xl shadow-indigo-500/20 text-[10px] uppercase tracking-[0.3em]">
+                Start your brief
+              </a>
+              <a href="/waitlist" className="px-10 py-5 border border-zinc-800 text-zinc-300 font-bold rounded-2xl hover:bg-zinc-900 transition-colors text-[10px] uppercase tracking-[0.3em]">
+                Join waitlist
+              </a>
+            </motion.div>
           </div>
+        </div>
 
-          {/* 3D Stage - full bleed */}
+        {/* 3D Stage - full bleed */}
+        <div
+          className="relative"
+          style={{
+            width: "100vw",
+            marginLeft: "-50vw",
+            marginRight: "-50vw",
+            position: "relative",
+            left: "50%",
+            right: "50%",
+            height: "800px",
+            marginTop: "20px",
+          }}
+        >
           <div
-            className="relative mt-16"
+            className="absolute bottom-0 left-0 right-0 h-[400px] z-10 pointer-events-none"
             style={{
-              width: "100vw",
-              marginLeft: "-50vw",
-              marginRight: "-50vw",
+              background: "linear-gradient(to top, #09090B 30%, transparent 100%)",
+            }}
+          />
+
+          {/* Perspective container */}
+          <div
+            style={{
+              transform: `translateY(${yOffset}px)`,
+              transition: "transform 0.1s ease-out",
+              contain: "strict",
+              perspective: "4000px",
+              perspectiveOrigin: "100% 0",
+              width: "100%",
+              height: "100%",
+              transformStyle: "preserve-3d",
               position: "relative",
-              left: "50%",
-              right: "50%",
-              height: "700px",
-              marginTop: "-60px",
             }}
           >
-            <div
-              className="absolute bottom-0 left-0 right-0 h-72 z-10 pointer-events-none"
-              style={{
-                background: "linear-gradient(to top, #09090B 20%, transparent 100%)",
+            {/* Transformed base */}
+            <motion.div
+              initial={{ opacity: 0, rotateX: 60, scale: 0.8 }}
+              animate={{ opacity: 1, rotateX: 47, scale: 1.2 }}
+              transition={{
+                delay: 0.5,
+                duration: 1.5,
+                ease: [0.22, 1, 0.36, 1],
               }}
-            />
-
-            {/* Perspective container */}
-            <div
               style={{
-                transform: `translateY(${yOffset}px)`,
-                transition: "transform 0.1s ease-out",
-                contain: "strict",
-                perspective: "4000px",
-                perspectiveOrigin: "100% 0",
-                width: "100%",
-                height: "100%",
+                backgroundColor: "#09090B",
+                transformOrigin: "0 0",
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+                border: "1px solid rgba(255,255,255,0.05)",
+                borderRadius: "24px",
+                width: "1600px",
+                height: "900px",
+                margin: "250px auto auto",
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                transform: `translate(${baseTransform.translateX}%) scale(${baseTransform.scale}) rotateX(${baseTransform.rotateX}deg) rotateY(${baseTransform.rotateY}deg) rotate(${baseTransform.rotateZ}deg)`,
                 transformStyle: "preserve-3d",
-                position: "relative",
+                overflow: "hidden",
+                boxShadow: "0 100px 200px rgba(0,0,0,0.8)",
               }}
             >
-              {/* Transformed base */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: 0.5,
-                  duration: 1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                style={{
-                  backgroundColor: "#09090B",
-                  transformOrigin: "0 0",
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                  border: "1px solid #1e1e1e",
-                  borderRadius: "10px",
-                  width: "1600px",
-                  height: "900px",
-                  margin: "280px auto auto",
-                  position: "absolute",
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  transform: `translate(${baseTransform.translateX}%) scale(${baseTransform.scale}) rotateX(${baseTransform.rotateX}deg) rotateY(${baseTransform.rotateY}deg) rotate(${baseTransform.rotateZ}deg)`,
-                  transformStyle: "preserve-3d",
-                  overflow: "hidden",
-                }}
-              >
-                <DashboardMockup />
-              </motion.div>
-            </div>
+              <DashboardMockup />
+            </motion.div>
           </div>
-
-          <LogoCloud />
-          <FeatureCardsSection />
-          <CTASection />
-          <Footer />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }

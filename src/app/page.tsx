@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Hero3DStage } from "@/components/hero-3d-stage"
+import { LogoCloud } from "@/components/logo-cloud"
 import { FeatureCardsSection } from "@/components/feature-cards-section"
 import { WorkflowsSection } from "@/components/workflows-section"
 import { AISection } from "@/components/ai-section"
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="bg-[#09090B]">
       <Navbar />
       <Hero3DStage />
+      <LogoCloud />
       <section id="features">
         <FeatureCardsSection />
       </section>
